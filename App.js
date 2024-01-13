@@ -1,29 +1,23 @@
-import React from "react";
-import {Text , View,SafeAreaView , StyleSheet} from "react-native"
+// App.js
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, View, StyleSheet } from 'react-native';
+import Index from './src/apps/index'
+import SplashScreen from './src/screens/SplashScreen';
 
+const App = () => {
+ const [isLoaded, setIsLoaded] = useState(false);
 
-const App = ()=>{
+ useEffect(() => {
+   setTimeout(() => {
+     setIsLoaded(true);
+   }, 3000); // 3 seconds delay
+ }, []);
 
-  return (
-    <View style={styles.mainCont}>
-
-      <View style={{backgroundColor:"green",flex:2}}/>
-      <View style={{backgroundColor:"red",flex:1}}/>
-
-  </View>
-)
-
-}
-
-
-const styles = StyleSheet.create({
-
-  mainCont:{
-    flex:1,
-    flexDirection:"row",
-  }
-
-})
-
+ return (
+   <>
+     {isLoaded ? <Index/> : <SplashScreen />}
+   </>
+ );
+};
 
 export default App;
